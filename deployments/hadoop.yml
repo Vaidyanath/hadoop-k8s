@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hadoop
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: hadoop
+        track: stable
+    spec:
+      containers:
+      - name: hadoop
+        image: sequenceiq/hadoop-docker:2.7.1
+        imagePullPolicy: Never
+        ports:
+          # HDFS Ports
+          - containerPort: 50010
+          - containerPort: 50020
+          - containerPort: 50070
+          - containerPort: 50075
+          - containerPort: 50090
+          - containerPort: 8020
+          - containerPort: 9000
+          # Map Reduce Ports
+          - containerPort: 19888
+          # YARN Ports
+          - containerPort: 8030
+          - containerPort: 8031
+          - containerPort: 8032
+          - containerPort: 8033
+          - containerPort: 8040
+          - containerPort: 8042
+          - containerPort: 8088
+          # Other Ports
+          - containerPort: 49707
+          - containerPort: 2122

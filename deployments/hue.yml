@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hue
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: hue
+        track: stable
+    spec:
+      containers:
+      - name: hue
+        image: gethue/hue:latest
+        imagePullPolicy: Never
+        ports:
+          - containerPort: 8888
